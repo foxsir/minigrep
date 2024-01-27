@@ -6,7 +6,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     let config = minigrep::Config::build(&args).unwrap_or_else(|err| {
-        println!("Problem parsing arguments: {err}");
+        eprintln!("Problem parsing arguments: {err}");
         process::exit(1);
     });
 
@@ -14,7 +14,7 @@ fn main() {
     println!("In file {}", config.file_path);
 
     minigrep::run(config).unwrap_or_else(|err| {
-        println!("Application error: {err}");
+        eprintln!("Application error: {err}");
         process::exit(1);
     });
 }
